@@ -1,6 +1,6 @@
 .navbar {
     height: 50px;
-    background-color: rgba(102, 16, 83, 0.698);
+    background-color: rgba(21, 182, 102, 0.698);
     color: white;
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@
   .cardButton {
     border: none;
     border-radius: 10px;
-    background-color: rgba(53, 16, 102, 0.678);
+    background-color: rgba(144, 134, 158, 0.678);
     padding: 10px;
     color: white;
     font-weight: bold;
@@ -155,31 +155,34 @@
   }
   
   .loginButton{
-    width: 150px;
+    width: 180px;
+    height: 20px;
     padding: 15px 25px;
     border-radius: 5px;
-    color: white;
+    color: rgb(248, 242, 242);
     display: flex;
     align-items: center;
-    font-weight: bold;
+    font-weight:bolder;
     margin-bottom: 20px;
     cursor: pointer;
   }
   
   .google{
-    background-color: #df4930;
+    background-color: #d33317;
   }
   .facebook{
-    background-color: #507cc0;
+    background-color: #266acf;
   }
   .github{
-    background-color: black;
+    background-color: rgba(20, 10, 10, 0.877);
   }
   
   .icon{
-    width: 20px;
+    padding-left: 25px;
+    width: 30px;
     height: 20px;
     margin-right: 10px;
+    
   }
   
   input{

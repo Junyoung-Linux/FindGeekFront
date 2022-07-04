@@ -1,6 +1,7 @@
 import Google from "../images/google.png"
 import Facebook from "../images/facebook.png"
 import Github from "../images/github.png"
+import Twitter from "../images/twitter.png";
 
 const Login = () => {
   const google = () => {
@@ -14,6 +15,12 @@ const Login = () => {
   const facebook = () => {
     window.open("http://localhost:3001/auth/facebook", "_self");
   };
+  
+  const twitter = () => {
+    window.open("http://localhost:3001/auth/twitter", "_self");
+  };
+
+  
 
   return (
     <div className="login">
@@ -31,6 +38,10 @@ const Login = () => {
           <div className="loginButton github" onClick={github}>
             <img src={Github} alt="" className="icon" />
             Github
+          </div>
+          <div className="loginButton twitter" onClick={twitter}>
+            <img src={Twitter} alt="" className="icon" />
+            Twitter
           </div>
         </div>
         <div className="center">
