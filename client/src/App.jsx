@@ -1,5 +1,5 @@
 import React from "react";
-// import Navbar from "./components/Navebar";
+
 import "./App.css"
 import Home from "./pages/Home";
 import Post from "./pages/Post";
