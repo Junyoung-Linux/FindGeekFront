@@ -8,12 +8,13 @@ import Login from "./pages/Login";
 // import { useEffect, useState } from "react";
 import MainPage from "./MainPage";
 import Waiting from "./Waiting";
+import Project from "./Project";
 
 class App extends React.Component {
   render(){
     return (
       <>
-      <Waiting/>
+      <Project />
       </>
   );
   }

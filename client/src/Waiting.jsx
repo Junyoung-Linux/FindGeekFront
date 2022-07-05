@@ -16,13 +16,14 @@ class Waiting extends React.Component{
     <link rel="stylesheet" href="./App.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {/* <script src="../assets/js/find-geeks.js"></script> */}
+    <script src="../assets/js/find-geeks.js"></script>
   </head>
   <body>
     <div id="body">
-      {/* <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }"> */}
+	{/* <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }"> */}
+
 	<div class="flex flex-col flex-1 w-full">
-	  <header class="z-10 bg-white shadow-md dark:bg-gray-800" style="padding-top:1rem; padding-bottom:0.5rem;">
+	<header class="z-10 bg-white shadow-md dark:bg-gray-800" style={{paddingTop: "1rem", paddingBottom: "0.5rem"}}>
 	    <div class="container items-center justify-between mx-auto">
 	      <div class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
 		
@@ -64,12 +65,12 @@ class Waiting extends React.Component{
 		  </div>
 		</div>
 	      </div>
-	      <p id="input_err" class="text-xs text-red-600 dark:text-red-400" style="margin-left: 29%; margin-top:0.5%"></p>
+	      <p id="input_err" class="text-xs text-red-600 dark:text-red-400" style={{marginLeft: "29%", marginTop:"0.5%"}}></p>
 	    </div>
 	  </header>
 		<main class="mb-auto mt-auto text-center">
 			<p>예상소요시간: 23분</p>
-			<div class="spinner-border"  style="width:5rem;height:5rem"role="status">
+			<div class="spinner-border"  style={{width:"5rem", height:"5rem"}}role="status">
 			<span class="sr-only">Loading...</span>
 			</div>
 		</main>
