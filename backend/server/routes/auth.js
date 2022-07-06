@@ -4,6 +4,7 @@ const passport = require("passport");
 const CLIENT_URL = "http://localhost:3000/";
 
 
+
 router.get("/login/success", (req, res) => {
   if (req.user) {
     res.status(200).json({
@@ -26,6 +27,7 @@ router.get("/login/failed", (req, res) => {
 //logout
 router.get("/logout", (req, res) => {
   req.logout();
+  req.destroy();
   res.redirect(CLIENT_URL);
 });
 
@@ -43,7 +45,7 @@ router.get(
 
 
 //github
-router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
+router.get("/github", passport.authenticate("github", { scope: ["profile"], session: false }));
 
 router.get(
   "/github/callback",

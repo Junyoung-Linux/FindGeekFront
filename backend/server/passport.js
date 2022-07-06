@@ -1,4 +1,6 @@
-const passport = require("passport")
+const passport = require("passport");
+
+
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const GitHubStrategy = require ('passport-github2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -26,55 +28,76 @@ const TWITTER_CONSUMER_SECRET = 'NqKWRzmNbNTMl6vXyAK5Pl6tEwNGYuZgoNS7WIwI3zgxu9Z
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/github/callback"
+    callbackURL: "http://localhost:3001/github/callback",
+    proxy: true
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
+  // async (accessToken, refreshToken, profile, cb) =>{
+  //   try{
+  //     const {name, login:githubId, html_url: githubURL} = profile._json;
+
+  //     let user = await User.findOne({githubId});
+
+  //     if (!user){
+  //       user = new User({
+  //         name,
+  //         githubId,
+  //         githubURL
+  //       }).save()
+  //     }
+  //     return cb(null, user);
+  //   } catch(err){
+  //     return cb(err);
+  //   }
+  // }
 ));
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      done(null, profile);
-    }
-  )
-);
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: GOOGLE_CLIENT_ID,
+//       clientSecret: GOOGLE_CLIENT_SECRET,
+//       callbackURL: "/auth/google/callback",
+//     },
+//     function (accessToken, refreshToken, profile, done) {
+//       done(null, profile);
+//     }
+//   )
+// );
 
 
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: FACEBOOK_APP_ID,
-      clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: "http://localhost:3001/auth/facebook/callback",
-    },
-    function (accessToken, refreshToken, profile, done) {
-      done(null, profile);
-    }
-  )
-);
+// passport.use(
+//   new FacebookStrategy(
+//     {
+//       clientID: FACEBOOK_APP_ID,
+//       clientSecret: FACEBOOK_APP_SECRET,
+//       callbackURL: "http://localhost:3001/auth/facebook/callback",
+//     },
+//     function (accessToken, refreshToken, profile, done) {
+//       done(null, profile);
+//     }
+//   )
+// );
 
 
-passport.use(
-  new TwitterStrategy(
-    {
-      consumerKey: TWITTER_CONSUMER_KEY,
-      consumerSecret: TWITTER_CONSUMER_SECRET,
-      callbackURL: "http://localhost:3001/twitter/callback",
-    },
-    function(accessToken,refreshToken,profile,done){
-      done(null,profile);
-    }
-  )
-)
+// passport.use(
+//   new TwitterStrategy(
+//     {
+//       consumerKey: TWITTER_CONSUMER_KEY,
+//       consumerSecret: TWITTER_CONSUMER_SECRET,
+//       callbackURL: "http://localhost:3001/twitter/callback",
+//     },
+//     function(accessToken,refreshToken,profile,done){
+//       done(null,profile);
+//     }
+//   )
+// )
+
+
 
 
 

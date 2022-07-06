@@ -10,12 +10,20 @@ const app = express();
 app.use(cookieSession(
     {name:"session",
     keys:["linuxGeek"],
-    maxAge: 24 * 60 * 60 * 100,  //one day cookie expires.
+    maxAge: 0,  //one day cookie expires.
 }
 ))
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
+// app.use((req,res,next) =>{
+//     console.log(req.session);
+//     console.log(req.user);
+//     next();
+// })
 
 app.use(cors({
     origin:"http://localhost:3000",
