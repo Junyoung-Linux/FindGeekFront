@@ -4,13 +4,16 @@ import Github from "./images/github.png";
 import Logo from "./images/find_geeks_logo.png";
 import {useUserContext} from "./context/userContext"
 
+
+
 const MainPage = () => {
 
     // gitLogin = () =>{
     // window.open("https://linuxgeek.firebaseapp.com/__/auth/handler", "_self"); };
-
+    var getGitId = document.getElementById('info')
     const {signInWithGithub} = useUserContext();
 
+     
     return (
         <> < head > <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -63,13 +66,18 @@ const MainPage = () => {
 
                             <label class="block text-sm">
                                 <input
+                                    id="info"
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="Search for GitHub ID"/>
                             </label>
 
+                            
+
+                            
+
                             <a
                                 class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                                href="./login.html">
+                                href="http://127.0.0.1:8000/">
                                 GitHub 활동결과분석
                             </a>
                         </div>
