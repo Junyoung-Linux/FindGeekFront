@@ -3,16 +3,27 @@
 // import { useUserContext } from "./context/userContext";
 import Mainpage from "./MainPage";
 import "./App.css";
+import {BrowserRouter,Route,Switch} from "react-router-dom"
 
 function App() {
   // const { user, loading, error } = useUserContext();
 
   return (
-    <div className="App">
-      <Mainpage />
-      
-      
-    </div>
+    
+    <BrowserRouter>
+    <>
+    <Switch>
+      <Route path ="/">
+        <Mainpage />
+      </Route>
+    </Switch>
+    
+    
+    
+    </>
+    </BrowserRouter>
+
+    
   );
 }
 

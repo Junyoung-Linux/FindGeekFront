@@ -1,19 +1,48 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './App.css';
 import Github from "./images/github.png";
 import Logo from "./images/find_geeks_logo.png";
 import {useUserContext} from "./context/userContext"
-
+import axios from 'axios';
 
 
 const MainPage = () => {
-
-    // gitLogin = () =>{
-    // window.open("https://linuxgeek.firebaseapp.com/__/auth/handler", "_self"); };
-    var getGitId = document.getElementById('info')
+    
     const {signInWithGithub} = useUserContext();
 
-     
+    const [post, setPost] = useState([])
+
+    const [account, setAccount] = useState({
+        id: ""
+    })
+    const Link = `http://localhost:8000/${account.id}`
+
+    function onChangeAccount(e){
+        setAccount({
+            account,
+            [e.target.id]: e.target.value,
+        },[])
+    }
+
+    function clickMe (e){
+        return(
+            window.location.href = Link
+            
+        )
+    }
+
+    useEffect(() => {
+        axios({
+            
+            method:"GET",
+            url: Link,
+            
+            
+        }).then(response => setPost(response.id))
+    },[])
+
+    
+
     return (
         <> < head > <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -66,7 +95,8 @@ const MainPage = () => {
 
                             <label class="block text-sm">
                                 <input
-                                    id="info"
+                                    id="id"
+                                    onChange={onChangeAccount}
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="Search for GitHub ID"/>
                             </label>
@@ -75,11 +105,14 @@ const MainPage = () => {
 
                             
 
-                            <a
-                                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                                href="http://127.0.0.1:8000/">
-                                GitHub 활동결과분석
-                            </a>
+                            <ul>
+                               <li onClick={clickMe}>
+                                클릭
+                               </li>
+                                
+                            </ul>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -93,4 +126,5 @@ const MainPage = () => {
 
 }
 
-export default MainPage;
+export default MainPage; 
+    
