@@ -2,28 +2,27 @@
 // import Dashboard from "./components/dashboard";
 // import { useUserContext } from "./context/userContext";
 import Mainpage from "./MainPage";
+import Project from "./Project";
 import "./App.css";
-import {BrowserRouter,Route,Switch} from "react-router-dom"
+import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
 
 function App() {
   // const { user, loading, error } = useUserContext();
 
   return (
-    
-    <BrowserRouter>
     <>
-    <Switch>
-      <Route path ="/">
-        <Mainpage />
-      </Route>
-    </Switch>
+    {/* <Project /> */}
+    <Router>
+      <Switch>
+      <Route path='/' component={Mainpage}/>
+      <Route path='/project' component={Project} />
     
-    
-    
+      </Switch>
+      
+    </Router>
     </>
-    </BrowserRouter>
-
     
+   
   );
 }
 

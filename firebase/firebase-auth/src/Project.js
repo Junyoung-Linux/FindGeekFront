@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useEffect} from "react";
 
-class Project extends React.Component {
-    render() {
+const Project = () => {
+
+
+
+     
         return (
             <> < head > <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -244,6 +247,6 @@ class Project extends React.Component {
 </>
         )
     }
-}
+
 
 export default Project;

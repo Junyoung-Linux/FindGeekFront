@@ -4,6 +4,7 @@ import Github from "./images/github.png";
 import Logo from "./images/find_geeks_logo.png";
 import {useUserContext} from "./context/userContext"
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 const MainPage = () => {
@@ -15,9 +16,11 @@ const MainPage = () => {
     const [account, setAccount] = useState({
         id: ""
     })
-    const Link = `http://localhost:8000/${account.id}`
+    const Link1 = `http://localhost:8000/${account.id}/`
+   
 
     function onChangeAccount(e){
+        console.log(account.id)
         setAccount({
             account,
             [e.target.id]: e.target.value,
@@ -26,20 +29,34 @@ const MainPage = () => {
 
     function clickMe (e){
         return(
-            window.location.href = Link
+            window.location.href = Link1
             
         )
     }
 
-    useEffect(() => {
-        axios({
+    // useEffect(() => {
+    //     axios({
             
-            method:"GET",
-            url: Link,
+    //         method:"GET",
+    //         url: Link,
             
             
-        }).then(response => setPost(response.id))
-    },[])
+    //     }).then(response => setPost(response.id))
+    // },[])
+
+    function textInput(){
+        var getId = document.getElementById("id").value;
+        axios.post(Link1,{
+            // userId : getId
+        })
+        .then(function (response){
+            console.log(response)
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+        <Link to="/project"></Link>
+    }
 
     
 
@@ -105,12 +122,16 @@ const MainPage = () => {
 
                             
 
-                            <ul>
-                               <li onClick={clickMe}>
-                                클릭
-                               </li>
-                                
-                            </ul>
+                            <>
+                            <Link to ="/project"
+                            class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                            onClick={textInput}>
+                            GitHub 활동결과분석
+
+
+                            </Link>
+                           
+                            </>
                             
                             
                         </div>
