@@ -1,6 +1,16 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
+import logo from "./images/find_geeks_logo.png";
 
 const Project = () => {
+
+    const [alertr,alertSet] = useState(false);
+
+
+    useEffect(() =>{
+        let timer = setInterval(() =>{
+            alertSet(false)
+        },3000)
+    })
 
 
 
@@ -39,7 +49,7 @@ const Project = () => {
                                     <a href="/">
                                         <img
                                             class="w-full h-full"
-                                            src={require("./images/find_geeks_logo.png")}
+                                            src={logo}
                                             alt=""
                                             loading="lazy"/>
                                     </a>
@@ -110,7 +120,8 @@ const Project = () => {
                             </p>
                             <button
                                 onclick="select_projects()"
-                                class="ml-3 mb-8 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"/>
+                                 style={{marginLeft:"3px", marginBottom:"8px",paddingLeft:"10px",borderStyle:"dashed",borderRadius:"10px"}}/>
+                                {/* //class="ml-3 mb-8 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"/> */}
                             GitHub 활동 결과분석 →
                         </div>
 
@@ -186,9 +197,10 @@ const Project = () => {
                     <button
                         id="more_button"
                         onclick="more_projs()"
-                        class="flex items-center mb-5"
+                        
                         style={{
-                            justifyContent: "center"
+                            justifyContent: "center",
+                            marginLeft: "512px"
                         }}>
                         <svg
                             class="w-5 h-5"

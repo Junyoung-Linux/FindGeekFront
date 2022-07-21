@@ -5,10 +5,16 @@ import Logo from "./images/find_geeks_logo.png";
 import {useUserContext} from "./context/userContext"
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import Project from "./Project";
+import Waiting from "./Waiting";
+
+
+
 
 
 const MainPage = () => {
-    
+
+   
     const {signInWithGithub} = useUserContext();
 
     const [post, setPost] = useState([])
@@ -17,7 +23,8 @@ const MainPage = () => {
         id: ""
     })
     const Link1 = `http://localhost:8000/${account.id}/`
-   
+
+
 
     function onChangeAccount(e){
         console.log(account.id)
@@ -27,12 +34,12 @@ const MainPage = () => {
         },[])
     }
 
-    function clickMe (e){
-        return(
-            window.location.href = Link1
+    // function clickMe (e){
+    //     return(
+    //         window.location.href = Link1
             
-        )
-    }
+    //     )
+    // }
 
     // useEffect(() => {
     //     axios({
@@ -47,15 +54,16 @@ const MainPage = () => {
     function textInput(){
         var getId = document.getElementById("id").value;
         axios.post(Link1,{
-            // userId : getId
+            
         })
         .then(function (response){
-            console.log(response)
+            console.log(response,{"id":account.id})
+           
         })
         .catch(function(error){
             console.log(error);
         });
-        <Link to="/project"></Link>
+        <Link to="/waiting"></Link>
     }
 
     
@@ -74,6 +82,7 @@ const MainPage = () => {
         <script src="../assets/js/init-alpine.js"></script>
     </head>
     <body>
+       
         <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
             <div
                 class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
@@ -116,14 +125,19 @@ const MainPage = () => {
                                     onChange={onChangeAccount}
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                     placeholder="Search for GitHub ID"/>
+                                 
                             </label>
+
+                            
+                           
+                               
 
                             
 
                             
 
                             <>
-                            <Link to ="/project"
+                            <Link to ="/waiting"
                             class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                             onClick={textInput}>
                             GitHub 활동결과분석
@@ -132,6 +146,9 @@ const MainPage = () => {
                             </Link>
                            
                             </>
+
+                            
+                            
                             
                             
                         </div>

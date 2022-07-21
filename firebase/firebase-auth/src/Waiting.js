@@ -1,8 +1,33 @@
-import React from "react";
+import { async } from "@firebase/util";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
 import "./App.css"
+import logo from "./images/find_geeks_logo.png";
+import MainPage from "./MainPage";
 
-class Waiting extends React.Component {
-    render() {
+
+const Waiting =(props) => {
+
+    const[listItem, setListItem] = useState(null);
+    const[loading, setLoading] = useState(false);
+    // const[account, setAccount] = useState({
+    //     id: ""
+    // });
+   
+    
+    const listFunction = async() =>{
+
+        try{
+            const data = await axios.get(
+                "<str:id>/projects/"
+            ).then(res =>{
+                console.log(res);
+                setListItem(res)
+            });
+        }catch(e){
+            console.log(e);
+        }
+    }     
         return (
             <> < head > <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,7 +66,7 @@ class Waiting extends React.Component {
                                     <a href="/">
                                         <img
                                             class="w-full h-full"
-                                            src={require("./images/find_geeks_logo.png")}
+                                            src={logo}
                                             alt=""
                                             loading="lazy"/>
                                     </a>
@@ -109,6 +134,6 @@ class Waiting extends React.Component {
 
         );
     }
-}
+
 
 export default Waiting;
